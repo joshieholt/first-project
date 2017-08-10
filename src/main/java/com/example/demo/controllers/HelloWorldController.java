@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.models.Adder;
+//import com.example.demo.models.Adder;
 import com.example.demo.models.Yeller;
 import com.example.demo.models.Whisperer;
 
 @Controller
-@RequestMapping({"/", "/HelloWorld"})
+@RequestMapping({ "/", "/HelloWorld" })
 public class HelloWorldController {
 	
 	private String title;
@@ -60,13 +60,6 @@ public class HelloWorldController {
 //		return mv;
 //	}
 
-	@PostMapping("adder")
-	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, Model model) {
-		Adder adder = new Adder(first, second);
-		double result = adder.calculate();
-		
-		model.addAttribute("sum", result);
-		return "helloworld/sum-result";
-	}
+
 	
 }
