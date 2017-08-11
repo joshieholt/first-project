@@ -21,7 +21,7 @@ public class MathsController {
 	
 	@GetMapping("adder")
 	public String adder() {
-		return "helloworld/adder";
+		return "maths/adder";
 	}
 	
 	@PostMapping("adder")
@@ -30,6 +30,6 @@ public class MathsController {
 		double result = adder.calculate();
 		
 		model.addAttribute("sum", result);
-		return "helloworld/sum-result";
+		return "maths/sum-result";
 	}
 }

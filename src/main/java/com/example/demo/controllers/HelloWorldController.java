@@ -32,7 +32,7 @@ public class HelloWorldController {
 		Yeller yeller = new Yeller(message);
 		String result = yeller.yell();
 		
-		ModelAndView mv = new ModelAndView("helloworld/message");
+		ModelAndView mv = new ModelAndView("helloworld/yeller");
 		mv.addObject("title", title);
 		mv.addObject("message", result);
 		return mv;
