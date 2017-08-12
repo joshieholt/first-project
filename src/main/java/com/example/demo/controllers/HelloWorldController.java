@@ -27,39 +27,28 @@ public class HelloWorldController {
 		return "helloworld/index";
 	}
 	
-	@GetMapping("message")
-	public ModelAndView message(@RequestParam(required=false, defaultValue="«silence»") String message) {
-		Yeller yeller = new Yeller(message);
-		String result = yeller.yell();
+	@PostMapping("say-something")
+	public String speakToMe(Model model) {
 		
-		ModelAndView mv = new ModelAndView("helloworld/yeller");
-		mv.addObject("title", title);
-		mv.addObject("message", result);
-		return mv;
+		model.addAttribute("title",title);
+		model.addAttribute("output","");
+		return "helloworld/mixed-messages";
 	}
 	
-	@GetMapping("whisper")
-	public ModelAndView whisper(@RequestParam(required=false, defaultValue="«shhhhh»") String message) {
-		Whisperer whisperer = new Whisperer(message);
-		String result = whisperer.whisper();
-		
-		ModelAndView mv = new ModelAndView("helloworld/whisper");
-		mv.addObject("title", title);
-		mv.addObject("message", result);
-		return mv;
+	@GetMapping("say-something")
+	public String makeAChoice(String message, String speechChoice, Model model) {
+		String result = "";
+		if (speechChoice.equals("yell")) {
+				Yeller yeller = new Yeller(message);
+				result = yeller.yell();
+		}
+		else if (speechChoice.equals("whisper")) {
+			Whisperer whisperer = new Whisperer(message);
+			result = whisperer.whisper();
+		}
+		model.addAttribute("title", title);
+		model.addAttribute("output", result);
+		return "helloworld/mixed-messages";
 	}
-	
-//	@GetMapping("message-path") this is the url path that will cause java to call this method
-//	public ModelAndView messageMethod(@RequestParam(required=false, defaultValue="«silence»") String submittedMessage) {
-//		Yeller yeller = new Yeller(submittedMessage);
-//		String result = yeller.yell();
-//		
-//		ModelAndView mv = new ModelAndView("helloworld/message"); this tells it which template to get/use
-//		mv.addObject("title", title);
-//		mv.addObject("message", result);  this 'message' is the placeholder moustache used in the html template.  it will be replaced by 'result' variable value
-//		return mv;
-//	}
-
-
 	
 }

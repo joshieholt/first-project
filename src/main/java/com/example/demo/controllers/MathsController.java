@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.models.Adder;
+import com.example.demo.models.Calculator;
 
 @Controller
-@RequestMapping("/maths")
+@RequestMapping("/calculator")
 public class MathsController {
 //	private String title;
 //	
@@ -19,17 +19,17 @@ public class MathsController {
 //		title = "Do The Maths!";
 //	}
 	
-	@GetMapping("adder")
+	@PostMapping("")
 	public String adder() {
-		return "maths/adder";
+		return "calculator/mathser";
 	}
 	
-	@PostMapping("adder")
-	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, Model model) {
-		Adder adder = new Adder(first, second);
+	@PostMapping("mathser")
+	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, @RequestParam(name="calcChoice") String operation, Model model) {
+		Calculator adder = new Calculator(first, second, operation);
 		double result = adder.calculate();
 		
 		model.addAttribute("sum", result);
-		return "maths/sum-result";
+		return "calculator/maths-result";
 	}
 }

@@ -40,6 +40,7 @@ button {
   background-color: #FF5555;
   color: white;
   outline: 0;
+  width: 200px;
 }
 
 button:focus,
@@ -55,3 +56,25 @@ button:active {
   color: black;
 }
 
+.mathButton {
+  border-radius: 0;
+  padding: 4px 8px;
+  border: 2px solid transparent;
+  background-color: #FF5555;
+  color: white;
+  outline: 0;
+  width: 60px;
+}
+
+mathButton,
+mathButton {
+  border-color: #FF5555;
+  background-color: transparent;
+  color: #FF5555;
+}
+
+mathButton {
+  border-color: #FF5555;
+  background-color: #ff8982;
+  color: black;
+}

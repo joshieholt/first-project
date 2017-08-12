@@ -4,8 +4,13 @@
     <link rel="stylesheet" href="/site.css">
   </head>
   <body>
-    <h1>Welcome to your First Project!</h1>
-    {{> helloworld/yeller-form }}
-    {{> helloworld/whisper-form }}
+    <h1>Welcome to my First Project!</h1>
+    <form method="post" action="/HelloWorld/say-something">
+      <button>Speak the words...</button>
+    </form>
+    <br/>
+    <form method="post" action="/calculator">
+      <button>Do the maths...</button>
+    </form>
   </body>
 </html>
